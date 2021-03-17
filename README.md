@@ -1,7 +1,4 @@
 # Curtain
- [![Hex.pm](https://img.shields.io/badge/download-0.0.9-green)](https://bintray.com/beta/#/soulqw/AndroidFrame/curtain?tab=overview)
- [![Hex.pm](https://img.shields.io/badge/Jetpack-AndroidX-orange)]()
- [![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 #### 一个更简洁好用的高亮蒙层库：
  - 一行代码完成某个View,或者多个View的高亮展示
  - 支持基于AapterView(如ListView、GridView) 和RecyclerView 的item以及item中元素的高亮
