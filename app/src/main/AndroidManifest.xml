@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
-    package="com.qw.curtain.sample">
+    package="com.lqx.curtain.sample">
 
     <dist:module dist:instant="true" />
 
@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name="com.lqx.curtain.sample.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -23,16 +23,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AdapterViewActivity"
+            android:name="com.lqx.curtain.sample.AdapterViewActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".SimpleGuideActivity"
+            android:name="com.lqx.curtain.sample.SimpleGuideActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".RecyclerViewActivity"
+            android:name="com.lqx.curtain.sample.RecyclerViewActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".CurtainFlowGuideActivity"
+            android:name="com.lqx.curtain.sample.CurtainFlowGuideActivity"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
