@@ -1,6 +1,7 @@
 package com.qw.curtain.sample;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
 
@@ -98,13 +99,13 @@ public class CurtainFlowGuideActivity extends AppCompatActivity {
     private Curtain getStepOneGuide() {
         return new Curtain(CurtainFlowGuideActivity.this)
                 .with(findViewById(R.id.iv_guide_first))
-                .setTopView(R.layout.view_guide_flow1);
+                .setTopView(LayoutInflater.from(this).inflate(R.layout.view_guide_flow1, null));
     }
 
     private Curtain getStepTwoGuide() {
         return new Curtain(CurtainFlowGuideActivity.this)
                 .with(findViewById(R.id.btn_shape_circle))
-                .setTopView(R.layout.view_guide_flow2);
+                .setTopView(LayoutInflater.from(this).inflate(R.layout.view_guide_flow2, null));
     }
 
     private Curtain getStepThreeGuide() {
@@ -113,7 +114,7 @@ public class CurtainFlowGuideActivity extends AppCompatActivity {
                 .withShape(findViewById(R.id.btn_shape_custom), new RoundShape(12))
                 //自定义高亮形状的Padding
                 .withPadding(findViewById(R.id.btn_shape_custom), 24)
-                .setTopView(R.layout.view_guide_flow3);
+                .setTopView(LayoutInflater.from(this).inflate(R.layout.view_guide_flow3, null));
     }
 
 }

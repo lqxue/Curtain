@@ -12,7 +12,7 @@ public interface IGuide {
 
     void updateHollows(HollowInfo... hollows);
 
-    void updateTopView(@LayoutRes int layoutId);
+    void updateTopView(View view);
 
     <T extends View> T findViewByIdInTopView(@IdRes int id);
 

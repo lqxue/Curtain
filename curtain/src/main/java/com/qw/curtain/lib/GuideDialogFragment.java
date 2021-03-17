@@ -32,7 +32,7 @@ public class GuideDialogFragment extends DialogFragment implements IGuide {
 
     private Curtain.CallBack callBack;
 
-    private int topLayoutRes = 0;
+    private View topView = null;
 
     private GuideView guideView;
 
@@ -41,7 +41,7 @@ public class GuideDialogFragment extends DialogFragment implements IGuide {
         guideView.setId(GUIDE_ID);
         this.contentView = new FrameLayout(activity);
         this.contentView.addView(guideView);
-        if (topLayoutRes != 0) {
+        if (topView != null) {
             updateTopView();
         }
         dialog = new AlertDialog.Builder(activity, R.style.TransparentDialog)
@@ -59,8 +59,8 @@ public class GuideDialogFragment extends DialogFragment implements IGuide {
         this.callBack = callBack;
     }
 
-    public void setTopViewRes(int topLayoutRes) {
-        this.topLayoutRes = topLayoutRes;
+    public void setTopView(View topView) {
+        this.topView = topView;
     }
 
     public void setGuideView(GuideView guideView) {
@@ -93,11 +93,11 @@ public class GuideDialogFragment extends DialogFragment implements IGuide {
     }
 
     @Override
-    public void updateTopView(@LayoutRes int layoutId) {
+    public void updateTopView(View topView) {
         if (null == contentView || getActivity() == null) {
             return;
         }
-        setTopViewRes(layoutId);
+        setTopView(topView);
         updateTopView();
     }
 
@@ -158,6 +158,6 @@ public class GuideDialogFragment extends DialogFragment implements IGuide {
         if (contentView.getChildCount() == MAX_CHILD_COUNT) {
             contentView.removeViewAt(1);
         }
-        LayoutInflater.from(contentView.getContext()).inflate(topLayoutRes, contentView, true);
+        contentView.addView(topView);
     }
 }

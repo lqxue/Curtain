@@ -28,7 +28,7 @@ public class Curtain {
 
     int curtainColor = 0xAA000000;
 
-    int topViewId;
+    View topView;
 
     int animationStyle = 0;
 
@@ -120,8 +120,8 @@ public class Curtain {
     /**
      * 自定义的引导页蒙层和镂空部分View
      */
-    public Curtain setTopView(@LayoutRes int layoutId) {
-        this.topViewId = layoutId;
+    public Curtain setTopView(View view) {
+        this.topView = view;
         return this;
     }
 
@@ -190,7 +190,7 @@ public class Curtain {
         guider.setCancelable(cancelBackPressed);
         guider.setCallBack(callBack);
         guider.setAnimationStyle(animationStyle);
-        guider.setTopViewRes(topViewId);
+        guider.setTopView(topView);
         GuideView guideView = new GuideView(activity);
         guideView.setCurtainColor(curtainColor);
         addHollows(guideView);

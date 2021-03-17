@@ -1,6 +1,7 @@
 package com.qw.curtain.sample;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -58,7 +59,7 @@ public class SimpleGuideActivity extends AppCompatActivity {
                 //自定义高亮形状的Padding
 //                .withPadding(findViewById(R.id.btn_shape_custom), Padding.only(30,20))
                 .withPadding(findViewById(R.id.btn_shape_custom), Padding.all(10))
-                .setTopView(R.layout.view_guide_1)
+                .setTopView(LayoutInflater.from(this).inflate(R.layout.view_guide_1, null))
                 .setCallBack(new Curtain.CallBack() {
                     @Override
                     public void onShow(final IGuide iGuide) {
@@ -82,7 +83,7 @@ public class SimpleGuideActivity extends AppCompatActivity {
     private void showThirdGuide() {
         new Curtain(SimpleGuideActivity.this)
                 .with(findViewById(R.id.btn_open_left))
-                .setTopView(R.layout.view_guide_2)
+                .setTopView(LayoutInflater.from(this).inflate(R.layout.view_guide_2, null))
                 .setCallBack(new Curtain.CallBack() {
                     @Override
                     public void onShow(final IGuide iGuide) {

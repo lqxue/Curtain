@@ -132,7 +132,7 @@ public class CurtainFlow implements CurtainFlowInterface {
         guider.setGuideView(guideView);
         guider.setCancelable(curtain.cancelBackPressed);
         guider.setAnimationStyle(curtain.animationStyle);
-        guider.setTopViewRes(curtain.topViewId);
+        guider.setTopView(curtain.topView);
     }
 
     private void doWhenCurtainUpdated(Curtain curtain, int index) {
