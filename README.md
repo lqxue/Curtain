@@ -58,7 +58,7 @@ dependencies {
    private void showCurtain(){
         new Curtain(MainActivity.this)
                 .with(findViewById(R.id.textView))
-                .setTopView(R.layout.nav_header_main)
+                .setTopView(LayoutInflater.from(this).inflate(R.layout.nav_header_main, null))
                 .show();
     }
 ```
