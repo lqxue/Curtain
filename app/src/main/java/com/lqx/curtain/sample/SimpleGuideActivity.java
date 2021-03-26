@@ -11,6 +11,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.lqx.curtain.lib.Curtain;
+import com.lqx.curtain.lib.CurtainInflate;
 import com.lqx.curtain.lib.IGuide;
 import com.lqx.curtain.lib.Padding;
 import com.lqx.curtain.lib.shape.RoundShape;
@@ -50,7 +51,7 @@ public class SimpleGuideActivity extends AppCompatActivity {
      * 高亮自定义按钮，形状自定圆角程度
      */
     private void showInitGuide() {
-        new Curtain(SimpleGuideActivity.this)
+        new CurtainInflate(SimpleGuideActivity.this)
                 .with(findViewById(R.id.iv_guide_first))
                 .with(findViewById(R.id.btn_shape_circle))
                 .with(findViewById(R.id.btn_shape_custom))
@@ -60,7 +61,7 @@ public class SimpleGuideActivity extends AppCompatActivity {
 //                .withPadding(findViewById(R.id.btn_shape_custom), Padding.only(30,20))
                 .withPadding(findViewById(R.id.btn_shape_custom), Padding.all(10))
                 .setTopView(LayoutInflater.from(this).inflate(R.layout.view_guide_1, null))
-                .setCallBack(new Curtain.CallBack() {
+                .setCallBack(new CurtainInflate.CallBack() {
                     @Override
                     public void onShow(final IGuide iGuide) {
                         iGuide.findViewByIdInTopView(R.id.tv_i_know)
