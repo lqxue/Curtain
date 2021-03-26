@@ -1,23 +1,16 @@
 package com.lqx.curtain.lib;
 
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.content.Context;
 import android.view.View;
 import android.widget.FrameLayout;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
 
 /**
- * @author cd5160866
+ *
+ * @author lqx
  */
-public class GuideViewGroup implements IGuide {
+public class GuideViewWrapper implements IGuide {
 
     private static final int MAX_CHILD_COUNT = 2;
 
@@ -30,7 +23,8 @@ public class GuideViewGroup implements IGuide {
     private View topView = null;
 
     private GuideView guideView;
-    private View contentParent;
+
+    private View decorView;
 
     public void show() {
         FragmentActivity activity = (FragmentActivity) guideView.getContext();
@@ -40,14 +34,26 @@ public class GuideViewGroup implements IGuide {
         if (topView != null) {
             updateTopView();
         }
-        contentParent = activity.getWindow().getDecorView();
-        if (contentParent instanceof FrameLayout){
-            ((FrameLayout) contentParent).removeView(contentView);
-            ((FrameLayout) contentParent).addView(contentView);
+        contentView.setPadding(0, getStatusBarHeight(activity),0,0);
+        decorView = activity.getWindow().getDecorView();
+        if (decorView instanceof FrameLayout){
+            ((FrameLayout) decorView).removeView(contentView);
+            ((FrameLayout) decorView).addView(contentView);
         }
         if (null != callBack) {
             callBack.onShow(this);
         }
+    }
+
+    /**
+     * 获取状态栏的高度
+     */
+    private int getStatusBarHeight(Context context){
+        int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            return context.getResources().getDimensionPixelSize(resourceId);
+        }
+        return 0;
     }
 
     public void setCallBack(CurtainInflate.CallBack callBack) {
@@ -95,8 +101,8 @@ public class GuideViewGroup implements IGuide {
 
     @Override
     public void dismissGuide() {
-        if (contentParent instanceof FrameLayout){
-            ((FrameLayout) contentParent).removeView(contentView);
+        if (decorView instanceof FrameLayout){
+            ((FrameLayout) decorView).removeView(contentView);
         }
         if (null != callBack) {
             callBack.onDismiss(this);

@@ -17,7 +17,7 @@ import com.lqx.curtain.lib.shape.Shape;
 /**
  * https://github.com/lqxue/Curtain
  *
- * 因为在弹窗业务很多的情况下,使用弹窗手势会覆盖复杂的业务弹窗
+ * 因为在弹窗业务很多的情况下,使用GuideDialogFragment会盖住复杂的业务弹窗
  * 所以采用将指引布局注入到Activity的DecorView
  * @author lqx
  */
@@ -187,7 +187,7 @@ public class CurtainInflate {
             });
             return;
         }
-        GuideViewGroup guider = new GuideViewGroup();
+        GuideViewWrapper guider = new GuideViewWrapper();
         guider.setCallBack(callBack);
         guider.setTopView(topView);
         GuideView guideView = new GuideView(activity);
