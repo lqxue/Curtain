@@ -3,6 +3,7 @@ package com.lqx.curtain.sample;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.FrameLayout;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,7 +12,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.lqx.curtain.lib.Curtain;
-import com.lqx.curtain.lib.CurtainInflate;
+import com.lqx.curtain.lib.CurtainInflateFragmentView;
 import com.lqx.curtain.lib.IGuide;
 import com.lqx.curtain.lib.Padding;
 import com.lqx.curtain.lib.shape.RoundShape;
@@ -51,33 +52,64 @@ public class SimpleGuideActivity extends AppCompatActivity {
      * 高亮自定义按钮，形状自定圆角程度
      */
     private void showInitGuide() {
-        new CurtainInflate(SimpleGuideActivity.this)
-                .with(findViewById(R.id.iv_guide_first))
-                .with(findViewById(R.id.btn_shape_circle))
-                .with(findViewById(R.id.btn_shape_custom))
-                //自定义高亮形状
-                .withShape(findViewById(R.id.btn_shape_custom), new RoundShape(12))
-                //自定义高亮形状的Padding
+//        new CurtainInflate(SimpleGuideActivity.this)
+//                .with(findViewById(R.id.iv_guide_first))
+//                .with(findViewById(R.id.btn_shape_circle))
+//                .with(findViewById(R.id.btn_shape_custom))
+//                //自定义高亮形状
+//                .withShape(findViewById(R.id.btn_shape_custom), new RoundShape(12))
+//                //自定义高亮形状的Padding
+////                .withPadding(findViewById(R.id.btn_shape_custom), Padding.only(30,20))
+//                .withPadding(findViewById(R.id.btn_shape_custom), Padding.all(10))
+//                .setTopView(LayoutInflater.from(this).inflate(R.layout.view_guide_1, null))
+//                .setCallBack(new CurtainInflate.CallBack() {
+//                    @Override
+//                    public void onShow(final IGuide iGuide) {
+//                        iGuide.findViewByIdInTopView(R.id.tv_i_know)
+//                                .setOnClickListener(new View.OnClickListener() {
+//                                    @Override
+//                                    public void onClick(View v) {
+//                                        iGuide.dismissGuide();
+//                                    }
+//                                });
+//                    }
+//
+//                    @Override
+//                    public void onDismiss(IGuide iGuide) {
+//                        showThirdGuide();
+//                    }
+//                }).show();
+        View decorView = SimpleGuideActivity.this.getWindow().getDecorView();
+        if (decorView instanceof FrameLayout){
+            new CurtainInflateFragmentView(SimpleGuideActivity.this)
+                    .with(findViewById(R.id.iv_guide_first))
+                    .with(findViewById(R.id.btn_shape_circle))
+                    .with(findViewById(R.id.btn_shape_custom))
+                    //自定义高亮形状
+                    .withShape(findViewById(R.id.btn_shape_custom), new RoundShape(12))
+                    //自定义高亮形状的Padding
 //                .withPadding(findViewById(R.id.btn_shape_custom), Padding.only(30,20))
-                .withPadding(findViewById(R.id.btn_shape_custom), Padding.all(10))
-                .setTopView(LayoutInflater.from(this).inflate(R.layout.view_guide_1, null))
-                .setCallBack(new CurtainInflate.CallBack() {
-                    @Override
-                    public void onShow(final IGuide iGuide) {
-                        iGuide.findViewByIdInTopView(R.id.tv_i_know)
-                                .setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        iGuide.dismissGuide();
-                                    }
-                                });
-                    }
+                    .withPadding(findViewById(R.id.btn_shape_custom), Padding.all(10))
+                    .setTopView(LayoutInflater.from(this).inflate(R.layout.view_guide_1, null))
+                    .setCallBack(new CurtainInflateFragmentView.CallBack() {
+                        @Override
+                        public void onShow(final IGuide iGuide) {
+                            iGuide.findViewByIdInTopView(R.id.tv_i_know)
+                                    .setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            iGuide.dismissGuide();
+                                        }
+                                    });
+                        }
 
-                    @Override
-                    public void onDismiss(IGuide iGuide) {
-                        showThirdGuide();
-                    }
-                }).show();
+                        @Override
+                        public void onDismiss(IGuide iGuide) {
+                            showThirdGuide();
+                        }
+                    }).show((FrameLayout) findViewById(R.id.sl_root));
+        }
+
     }
 
 
